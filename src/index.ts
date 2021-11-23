@@ -1,3 +1,5 @@
-import { a } from './test1'
+import { useDevDemo } from './hooks/use-dev-demo'
 
-console.log("testing", a)
+export {
+  useDevDemo
+}

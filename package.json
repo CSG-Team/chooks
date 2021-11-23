@@ -1,14 +1,14 @@
 {
   "name": "cchooks",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "csg react hooks is chooks",
-  "main": "lib/index.cjs.js",
-  "module": "lib/index.esm.js",
-  "browser": "lib/index.browser.js",
+  "main": "./lib/index.cjs.js",
+  "module": "./lib/index.esm.js",
+  "browser": "./lib/index.browser.js",
   "scripts": {
     "prepare": "husky install",
-    "build": "rollup -c",
-    "lint": "eslint -c .eslintrc.json src/**/*.{ts}",
+    "build": "yarn lint & rollup -c",
+    "lint": "eslint src --ext .ts --ext .tsx",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -32,6 +32,7 @@
     "eslint": "^8.3.0",
     "eslint-plugin-react": "^7.27.1",
     "husky": "^7.0.4",
+    "react": "^17.0.2",
     "rollup": "^2.60.1",
     "rollup-plugin-node-resolve": "^5.2.0",
     "tslib": "^2.3.1",

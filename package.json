@@ -1,13 +1,20 @@
 {
   "name": "cchooks",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "csg react hooks is chooks",
   "main": "./lib/index.cjs.js",
   "module": "./lib/index.esm.js",
   "browser": "./lib/index.browser.js",
+  "types": "./types/index.d.ts",
+  "files": [
+    "src",
+    "lib",
+    "types"
+  ],
   "scripts": {
     "prepare": "husky install",
     "build": "yarn lint & rollup -c",
+    "build:types": "tsc",
     "lint": "eslint src --ext .ts --ext .tsx",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -1,5 +1,9 @@
-import { useDevDemo } from './hooks/use-dev-demo'
+import { useDevDemo, IOurInfo } from './hooks/use-dev-demo'
 
 export {
-  useDevDemo
+  // hooks
+  useDevDemo,
+
+  // necessary types
+  IOurInfo
 }

@@ -1,0 +1,50 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import CsgCard from "./index.tsx";
+
+<Meta title="Hooks/use-dev-demo" />
+
+
+
+# useDevDemo
+
+这是我们的第一个测试Hooks
+
+## 说明
+
+返回团队信息:
+* orgName: 组织名
+* slogan: 豪言壮语
+* member: 期待进步的人列表
+
+## 使用
+```tsx
+import { useDevDemo } from 'cchooks';
+
+// your component
+const CsgCard = () => {
+  // use this hooks
+  const { orgName, slogan, member } = useDevDemo();
+  return (
+    <Card hoverable style={{ width: 300 }} cover={CoverImg} actions={member}>
+      <Card.Meta title={orgName} description={slogan} />
+    </Card>
+  );
+};
+
+```
+上面的代码可以渲染出这个Card ⬇️
+
+
+export const Template = () => <CsgCard />
+
+
+<Canvas>
+  <Story 
+    name="positive"
+    args={{
+      status: 'positive',
+      label: 'Positive'
+  }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>

@@ -20,8 +20,10 @@ export default {
     }
   ],
   plugins: [
-    typescript(),
+    typescript({
+      exclude: ['./src/stories/**']
+    }),
     commonjs(),
     resolve(),
-  ]
+  ],
 }

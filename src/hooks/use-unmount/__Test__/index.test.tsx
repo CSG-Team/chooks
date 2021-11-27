@@ -2,7 +2,7 @@ import { renderHook } from "@testing-library/react-hooks";
 import React from 'react';
 import { useUnmount } from "../index";
 
-describe('useMount', () => {
+describe('useUnmount', () => {
 
     it('应该非undefined', () => {
         expect(useUnmount).toBeDefined()

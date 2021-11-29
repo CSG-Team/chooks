@@ -1,0 +1,55 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import Unmount from "./index.tsx";
+
+<Meta title="Hooks/use-unmount" />
+
+
+
+# useUnmount
+
+在组件卸载时执行
+
+
+## 使用
+```tsx
+import { useState } from 'react';
+import { useUnmount } from 'cchooks';
+
+const MyComponent = () => {
+  useMount(() => {
+      message.info('unmount');
+  });
+
+  return <div>Hello csg</div>;
+};
+
+const Unmount =  () => {
+  const [boolean, setBoolean] = useState(true);
+
+  return (
+    <>
+      <button type="button" onClick={() => setBoolean(!boolean)}>
+        {boolean ? 'mount' : 'unmount'}
+      </button>
+      {!boolean && <MyComponent />}
+    </>
+  );
+};
+
+```
+上面的代码渲染出以下效果
+
+
+export const Template = () => <Unmount />
+
+
+<Canvas>
+  <Story 
+    name="positive"
+    args={{
+      status: 'positive',
+      label: 'Positive'
+  }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>

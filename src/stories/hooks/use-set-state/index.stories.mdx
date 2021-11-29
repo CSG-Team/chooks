@@ -1,0 +1,64 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import SetState from "./index.tsx";
+
+<Meta title="Hooks/use-set-state" />
+
+
+
+# useSetState
+
+管理 object 类型 state 的 Hooks，用法与 class 组件的 this.setState 基本一致。
+
+
+## 使用
+```tsx
+import { useState } from 'react';
+import { useSetState } from 'cchooks';
+
+interface State {
+  hello: string;
+  count: number;
+  [key: string]: any;
+}
+
+const SetState =  () => {
+  const [state, setState] = useSetState<State>({
+    hello: '',
+    count: 0,
+  });
+
+  return (
+    <div>
+      <pre>{JSON.stringify(state, null, 2)}</pre>
+      <p>
+        <button type="button" onClick={() => setState({ hello: 'world' })}>
+          set hello
+        </button>
+        <button type="button" onClick={() => setState({ foo: 'bar' })} style={{ margin: '0 8px' }}>
+          set foo
+        </button>
+        <button type="button" onClick={() => setState((prev) => ({ count: prev.count + 1 }))}>
+          count + 1
+        </button>
+      </p>
+    </div>
+  );
+};
+
+```
+上面的代码渲染出以下效果
+
+
+export const Template = () => <SetState />
+
+
+<Canvas>
+  <Story 
+    name="positive"
+    args={{
+      status: 'positive',
+      label: 'Positive'
+  }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>

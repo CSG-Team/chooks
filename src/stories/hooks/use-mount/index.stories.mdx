@@ -1,0 +1,55 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import Mount from "./index.tsx";
+
+<Meta title="Hooks/use-mount" />
+
+
+
+# useMount
+
+仅在组件挂载时执行一次
+
+
+## 使用
+```tsx
+import { useState } from 'react';
+import { useMount } from 'cchooks';
+
+const MyComponent = () => {
+  useMount(() => {
+  message.info('mount');
+  });
+
+  return <div>Hello csg</div>;
+};
+
+const Mount = () => {
+  const [boolean, setBoolean] = useState(false);
+
+  return (
+    <>
+      <button type="button" onClick={() => setBoolean(!boolean)}>
+        {boolean ? 'unmount' : 'mount'}
+      </button>
+      {boolean && <MyComponent />}
+    </>
+  );
+};
+
+```
+上面的代码渲染出以下效果
+
+
+export const Template = () => <Mount />
+
+
+<Canvas>
+  <Story 
+    name="positive"
+    args={{
+      status: 'positive',
+      label: 'Positive'
+  }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>

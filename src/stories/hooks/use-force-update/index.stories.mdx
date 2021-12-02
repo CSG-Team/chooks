@@ -1,0 +1,43 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import ForceUpdateDemo from "./index.tsx";
+
+<Meta title="Hooks/use-force-update" />
+
+
+
+# useForceUpdate
+
+useForceUpdate暴露了一个方法，当调用这个方法的时候，使用该hook的组件就会被触发渲染。
+其本质是利用state触发了hook的渲染，相当于state变化导致的组件渲染。
+
+## 使用
+```tsx
+export default () => {
+  const update = useForceUpdate();
+
+  return (
+    <>
+      <div>Time: {Date.now()}</div>
+      <button type="button" onClick={update} style={{ marginTop: 8 }}>
+        update
+      </button>
+    </>
+  );
+};
+
+```
+
+
+export const Template = () => <ForceUpdateDemo />
+
+
+<Canvas>
+  <Story 
+    name="positive"
+    args={{
+      status: 'positive',
+      label: 'Positive'
+  }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>

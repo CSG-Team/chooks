@@ -1,27 +1,26 @@
 import { renderHook } from "@testing-library/react-hooks";
 import { useUnmountedRef } from "../index";
 
-describe('useUnmountedRef', () => {
+describe("useUnmountedRef", () => {
+  it("应该非undefined", () => {
+    expect(useUnmountedRef).toBeDefined();
+  });
 
-    it('应该非undefined', () => {
-        expect(useUnmountedRef).toBeDefined()
-    })
+  it("test useUnmountedRef", () => {
+    /**
+     * 1. 挂载的时候，current值为false
+     * 2. 重新执行的时候，current值为false
+     * 3. 卸载的时候,current值为true
+     */
 
-    it('test useUnmountedRef', () => {
+    const { result, unmount, rerender } = renderHook(() => useUnmountedRef());
 
-        /**
-         * 1. 挂载的时候，current值为false
-         * 2. 重新执行的时候，current值为false
-         * 3. 卸载的时候,current值为true
-         */
+    expect(result.current.current).toBe(false);
 
-        const { result, unmount, rerender } = renderHook(() => useUnmountedRef())
+    rerender();
+    expect(result.current.current).toBe(false);
 
-        expect(result.current.current).toEqual(false)
-        rerender()
-        expect(result.current.current).toEqual(false)
-        unmount()
-        expect(result.current.current).toEqual(true)
-    })
-
-})
+    unmount();
+    expect(result.current.current).toBe(true);
+  });
+});

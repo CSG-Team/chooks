@@ -1,5 +1,5 @@
 import { renderHook, act } from "@testing-library/react-hooks";
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect } from "react";
 import { useForceUpdate } from "../index";
 
 describe("useForceUpdate", () => {

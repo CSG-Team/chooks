@@ -4,8 +4,8 @@ import React from 'react';
  * 挂载时执行的hook
  * @param callback 
  */
-type CallbackFun = () => void;
-type useMountHook = (callback: CallbackFun) => void;
+export type useMountCallbackFun = () => void;
+type useMountHook = (callback: useMountCallbackFun) => void;
 
 const useMount: useMountHook = (callback) => {
 

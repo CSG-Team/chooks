@@ -8,7 +8,7 @@ import { useState, useCallback } from 'react';
 
 
 type SetStateFun<T> = (data: Partial<T> | ((state: T) => Partial<T>)) => void;
-type UseSetStateHook = <T extends Record<string, any>>(initialState: T) => [T, SetStateFun<T>];
+export type UseSetStateHook = <T extends Record<string, any>>(initialState: T) => [T, SetStateFun<T>];
 
 const useSetState: UseSetStateHook = <T extends Record<string, any>>(initialState: T) => {
 

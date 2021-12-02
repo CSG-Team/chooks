@@ -1,11 +1,11 @@
 import { Meta, Story, Canvas } from "@storybook/addon-docs";
 import UnmountedRef from "./index.tsx";
 
-<Meta title="Hooks/use-unmounted-ref" />
+<Meta title="Hooks/use-is-unmounted" />
 
 
 
-# useUnmountedRef
+# useIsUnmounted
 
 获取当前组件是否为卸载状态， 如果已经卸载了返回true
 
@@ -13,10 +13,10 @@ import UnmountedRef from "./index.tsx";
 ## 使用
 ```tsx
 import { useState } from 'react';
-import { useUnmountedRef } from 'cchooks';
+import { useIsUnmounted } from 'cchooks';
 
 const MyComponent = () => {
-  const unmountedRef = useUnmountedRef();
+  const unmountedRef = useIsUnmounted();
   useEffect(() => {
     setTimeout(() => {
       if (!unmountedRef.current) {

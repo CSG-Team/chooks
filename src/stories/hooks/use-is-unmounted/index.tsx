@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import 'antd/dist/antd.css';
 import { message } from 'antd';
-import { useUnmountedRef } from '../../../hooks/use-unmounted-ref';
+import { useIsUnmounted } from '../../../hooks/use-is-unmounted';
 
 const MyComponent = () => {
-  const unmountedRef = useUnmountedRef();
+  const unmountedRef = useIsUnmounted();
   useEffect(() => {
     setTimeout(() => {
       if (!unmountedRef.current) {

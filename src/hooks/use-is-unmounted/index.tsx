@@ -4,9 +4,9 @@ import { useRef, RefObject, useEffect } from 'react';
  * 获取当前组件是否已经卸载的 Hook
  * 如果已经卸载了返回true
  */
-type useUnmountedRefHook = () => RefObject<boolean>;
+type useIsUnmountedHook = () => RefObject<boolean>;
 
-const useUnmountedRef: useUnmountedRefHook = () => {
+const useIsUnmounted: useIsUnmountedHook = () => {
 
   const ref = useRef(false)
 
@@ -22,4 +22,4 @@ const useUnmountedRef: useUnmountedRefHook = () => {
 
 }
 
-export { useUnmountedRef };
+export { useIsUnmounted };

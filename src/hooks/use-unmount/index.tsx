@@ -4,8 +4,8 @@ import React from 'react';
  * 卸载时执行的hook
  * @param callback 
  */
-type CallbackFun = () => void;
-type useUnmountHook = (callback: CallbackFun) => void;
+export type useUnmountCallbackFun = () => void;
+type useUnmountHook = (callback: useUnmountCallbackFun) => void;
 
 const useUnmount: useUnmountHook = (callback) => {
 

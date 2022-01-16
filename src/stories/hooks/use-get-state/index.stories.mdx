@@ -1,0 +1,50 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import GetState from "./index.tsx";
+
+<Meta title="Hooks/use-get-state" />
+
+
+
+# GetState
+
+给 `React.useState` 增加了一个 getter 方法，以获取当前最新值。
+
+
+## 使用
+```tsx
+import React, { useState, useEffect } from 'react';
+import { useGetState } from 'cchooks';
+
+const GetState = () => {
+  const [count, setCount, getCount] = useGetState<number>(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      console.log('interval count', getCount());
+    }, 3000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
+  return <button onClick={() => setCount((count) => count + 1)}>count: {count}</button>;
+};
+
+```
+上面的代码渲染出以下效果
+
+
+export const Template = () => <GetState />
+
+
+<Canvas>
+  <Story 
+    name="positive"
+    args={{
+      status: 'positive',
+      label: 'Positive'
+  }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>

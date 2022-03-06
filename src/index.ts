@@ -6,6 +6,9 @@ import { useSetState, UseSetStateHook } from './hooks/use-set-state';
 import { useForceUpdate } from './hooks/use-force-update';
 import { useSafeState } from './hooks/use-safe-state';
 import { useBoolean } from './hooks/use-boolean';
+import { useGetState } from './hooks/use-get-state';
+import { useLatest } from './hooks/use-latest';
+import { useUpdateEffect } from './hooks/use-update-effect';
 
 export {
   // hooks
@@ -17,6 +20,9 @@ export {
   useForceUpdate,
   useSafeState,
   useBoolean,
+  useGetState,
+  useLatest,
+  useUpdateEffect,
   // necessary types
   IOurInfo,
   useMountCallbackFun,

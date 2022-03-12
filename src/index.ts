@@ -9,6 +9,8 @@ import { useBoolean } from './hooks/use-boolean';
 import { useGetState } from './hooks/use-get-state';
 import { useLatest } from './hooks/use-latest';
 import { useUpdateEffect } from './hooks/use-update-effect';
+import { useUpdateLayoutEffect } from './hooks/use-update-layout-effect';
+import { useTimeout } from './hooks/use-timeout';
 
 export {
   // hooks
@@ -23,6 +25,8 @@ export {
   useGetState,
   useLatest,
   useUpdateEffect,
+  useUpdateLayoutEffect,
+  useTimeout,
   // necessary types
   IOurInfo,
   useMountCallbackFun,

@@ -1,23 +1,7 @@
-import { useRef, useEffect } from "react";
+import { useEffect } from "react";
+import { createUpdateEffect } from '../create-update-effect'
 
 
-const useUpdateEffect = (cb, deps?: any,) => {
-    const isMounted = useRef(false);
-
-    useEffect(() => {
-        return () => {
-            isMounted.current = false;
-        }
-    }, [])
-
-    useEffect(() => {
-        if (!isMounted.current) {
-            isMounted.current = true;
-        } else {
-            return cb()
-        }
-    }, deps)
-
-}
+const useUpdateEffect = createUpdateEffect(useEffect)
 
 export { useUpdateEffect };

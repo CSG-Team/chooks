@@ -1,0 +1,53 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import Latest from "./index.tsx";
+
+<Meta title="Hooks/use-latest" />
+
+
+
+# useLatest
+
+返回当前最新值的 Hook，可以避免闭包问题。
+
+
+## 使用
+```tsx
+import React, { useState, useEffect } from 'react';
+import { useLatest } from 'cchooks';
+
+const Latest = () => {
+  const [count, setCount] = useState(0);
+
+  const latestCountRef = useLatest(count);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCount(latestCountRef.current + 1);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <>
+      <p>count: {count}</p>
+    </>
+  );
+};
+
+```
+上面的代码渲染出以下效果
+
+
+export const Template = () => <Latest />
+
+
+<Canvas>
+  <Story 
+    name="positive"
+    args={{
+      status: 'positive',
+      label: 'Positive'
+  }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>

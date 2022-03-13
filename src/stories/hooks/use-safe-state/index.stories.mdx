@@ -1,0 +1,59 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import SafeState from "./index.tsx";
+
+<Meta title="Hooks/use-safe-state" />
+
+
+
+# useSafeState
+
+用法与 `React.useState` 完全一样，但是在组件卸载后异步回调内的 `setState` 不再执行，避免因组件卸载后更新状态而导致的内存泄漏.
+
+
+## 使用
+```tsx
+import React, { useState, useEffect } from 'react';
+import { useSafeState } from 'cchooks';
+
+const Child = () => {
+  const [value, setValue] = useSafeState<string>();
+
+  useEffect(() => {
+    setTimeout(() => {
+      setValue('data loaded from server');
+    }, 5000);
+  }, []);
+
+  const text = value || 'Loading...';
+
+  return <div>{text}</div>;
+};
+
+const SafeState = () => {
+  const [visible, setVisible] = useState(true);
+
+  return (
+    <div>
+      <button onClick={() => setVisible(false)}>Unmount</button>
+      {visible && <Child />}
+    </div>
+  );
+};
+
+```
+上面的代码渲染出以下效果
+
+
+export const Template = () => <SafeState />
+
+
+<Canvas>
+  <Story 
+    name="positive"
+    args={{
+      status: 'positive',
+      label: 'Positive'
+  }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>

@@ -1,0 +1,43 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import Timeout from "./index.tsx";
+
+<Meta title="Hooks/use-timeout" />
+
+
+
+# useTimeout
+
+一个可以处理 setTimeout 计时器函数的 Hook。
+
+
+## 使用
+```tsx
+import React, { useState } from 'react';
+import { useTimeout } from 'cchooks';
+
+const Timeout = () => {
+  const [state, setState] = useState(1);
+  useTimeout(() => {
+    setState(state + 1);
+  }, 3000);
+
+  return <div>{state}</div>;
+};
+
+```
+上面的代码渲染出以下效果
+
+
+export const Template = () => <Timeout />
+
+
+<Canvas>
+  <Story 
+    name="positive"
+    args={{
+      status: 'positive',
+      label: 'Positive'
+  }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>

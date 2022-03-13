@@ -1,0 +1,54 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import BooleanCom from "./index.tsx";
+
+<Meta title="Hooks/use-boolean" />
+
+
+
+# useBoolean
+
+优雅的管理 boolean 状态的 Hook。
+
+
+## 使用
+```tsx
+import React from 'react';
+import { useBoolean } from 'ahooks';
+
+const BooleanCom () => {
+  const [state, { toggle, setTrue, setFalse }] = useBoolean(true);
+
+  return (
+    <div>
+      <p>Effects：{JSON.stringify(state)}</p>
+      <p>
+        <button type="button" onClick={toggle}>
+          Toggle
+        </button>
+        <button type="button" onClick={setFalse} style={{ margin: '0 16px' }}>
+          Set false
+        </button>
+        <button type="button" onClick={setTrue}>
+          Set true
+        </button>
+      </p>
+    </div>
+  );
+};
+```
+上面的代码渲染出以下效果
+
+
+export const Template = () => <BooleanCom />
+
+
+<Canvas>
+  <Story 
+    name="positive"
+    args={{
+      status: 'positive',
+      label: 'Positive'
+  }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>

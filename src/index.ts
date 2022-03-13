@@ -11,6 +11,7 @@ import { useLatest } from './hooks/use-latest';
 import { useUpdateEffect } from './hooks/use-update-effect';
 import { useUpdateLayoutEffect } from './hooks/use-update-layout-effect';
 import { useTimeout } from './hooks/use-timeout';
+import { useDeepCompareEffect } from './hooks/use-deep-compare-effect';
 
 export {
   // hooks
@@ -27,6 +28,7 @@ export {
   useUpdateEffect,
   useUpdateLayoutEffect,
   useTimeout,
+  useDeepCompareEffect,
   // necessary types
   IOurInfo,
   useMountCallbackFun,

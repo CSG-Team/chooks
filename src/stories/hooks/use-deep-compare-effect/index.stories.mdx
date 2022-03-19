@@ -1,0 +1,63 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import DeepCompareEffect from "./index.tsx";
+
+<Meta title="Hooks/use-deep-compare-effect" />
+
+
+
+# useDeepCompareEffect
+
+用法与 useEffect 一致，但 deps 通过 lodash isEqual 进行深比较。
+
+
+## 使用
+```tsx
+import React, { useEffect, useState, useRef } from 'react';
+import { useDeepCompareEffect } from 'cchooks';
+
+
+const DeepCompareEffect = () => {
+  const [count, setCount] = useState(0);
+  const effectCountRef = useRef(0);
+  const deepCompareCountRef = useRef(0);
+
+  useEffect(() => {
+    effectCountRef.current += 1;
+  }, [{}]);
+
+  useDeepCompareEffect(() => {
+    deepCompareCountRef.current += 1;
+    return () => {
+      // do something
+    };
+  }, [{}]);
+
+  return (
+    <div>
+      <p>effectCount: {effectCountRef.current}</p>
+      <p>deepCompareCount: {deepCompareCountRef.current}</p>
+      <p>
+        <button type="button" onClick={() => setCount((c) => c + 1)}>
+          reRender
+        </button>
+      </p>
+    </div>
+  );
+};
+```
+上面的代码渲染出以下效果
+
+
+export const Template = () => <DeepCompareEffect />
+
+
+<Canvas>
+  <Story 
+    name="positive"
+    args={{
+      status: 'positive',
+      label: 'Positive'
+  }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
